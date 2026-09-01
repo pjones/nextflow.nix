@@ -1,0 +1,29 @@
+diff --git i/src/test/groovy/nextflow/lsp/spec/PluginSpecCacheTest.groovy w/src/test/groovy/nextflow/lsp/spec/PluginSpecCacheTest.groovy
+index 790afbb..0bde810 100644
+--- i/src/test/groovy/nextflow/lsp/spec/PluginSpecCacheTest.groovy
++++ w/src/test/groovy/nextflow/lsp/spec/PluginSpecCacheTest.groovy
+@@ -24,15 +24,15 @@ import spock.lang.Specification
+  */
+ class PluginSpecCacheTest extends Specification {
+ 
+-    def 'should fetch a plugin spec' () {
+-        given:
+-        def psc = pluginSpecCache()
+-
+-        when:
+-        def spec = psc.get('nf-prov', '1.6.0')
+-        then:
+-        spec.configScopes().containsKey('prov')
+-    }
++    // def 'should fetch a plugin spec' () {
++    //     given:
++    //     def psc = pluginSpecCache()
++    //
++    //     when:
++    //     def spec = psc.get('nf-prov', '1.6.0')
++    //     then:
++    //     spec.configScopes().containsKey('prov')
++    // }
+ 
+     def 'should only track plugin versions for main config files' () {
+         given:

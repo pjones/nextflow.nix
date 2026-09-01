@@ -1,0 +1,16 @@
+diff --git i/build.gradle w/build.gradle
+index ad5dd0f..fb0f67b 100644
+--- i/build.gradle
++++ w/build.gradle
+@@ -38,6 +38,11 @@ dependencies {
+   implementation 'org.apache.groovy:groovy:4.0.31'
+   implementation 'org.apache.groovy:groovy-json:4.0.31'
+   implementation 'org.apache.groovy:groovy-yaml:4.0.31'
++  implementation 'org.apache.groovy:groovy-ant:4.0.31'
++  implementation 'org.apache.groovy:groovy-astbuilder:4.0.31'
++  implementation 'org.apache.groovy:groovy-datetime:4.0.31'
++  implementation 'org.apache.groovy:groovy-dateutil:4.0.31'
++  implementation 'org.apache.groovy:groovy-groovydoc:4.0.31'
+   implementation 'org.eclipse.lsp4j:org.eclipse.lsp4j:0.23.0'
+   implementation 'org.eclipse.lsp4j:org.eclipse.lsp4j.jsonrpc:0.23.0'
+ 
