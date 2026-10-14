@@ -15,17 +15,16 @@
           }:
           stdenv.mkDerivation (finalAttrs: {
             pname = "nextflow-lsp";
-            version = "26.04.3";
+            version = "26.10.0";
 
             src = fetchFromGitHub {
               owner = "nextflow-io";
               repo = "language-server";
               rev = "v${finalAttrs.version}";
-              hash = "sha256-0iYyULJqGWX6L9Qo53H/T7sLmO2qX8t1y5WSk5TmhkY=";
+              hash = "sha256-JNcDXDzLn5Uben+HuEbNZLDh0beGnF1+hciiB6ZGD1s=";
             };
 
             patches = [
-              ../patches/lsp-deps.patch
               ../patches/lsp-tests.patch
             ];
 
@@ -45,7 +44,7 @@
             # To update:
             #
             # ```
-            # nix build .\#nextflow-lsp.mitmCache.updateScript
+            # nix build .\#nextflow-language-server.mitmCache.updateScript
             # ./result
             # ```
             mitmCache = gradle.fetchDeps {
