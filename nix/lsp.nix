@@ -15,18 +15,14 @@
           }:
           stdenv.mkDerivation (finalAttrs: {
             pname = "nextflow-lsp";
-            version = "26.10.0";
+            version = "26.10.2";
 
             src = fetchFromGitHub {
               owner = "nextflow-io";
               repo = "language-server";
               rev = "v${finalAttrs.version}";
-              hash = "sha256-JNcDXDzLn5Uben+HuEbNZLDh0beGnF1+hciiB6ZGD1s=";
+              hash = "sha256-oM18d4Q8S1oTileNaqdnSA7cf7/5uQCECRpiPnYEpdg=";
             };
-
-            patches = [
-              ../patches/lsp-tests.patch
-            ];
 
             nativeBuildInputs = [
               gradle
@@ -53,6 +49,15 @@
             };
 
             doCheck = true;
+
+            postPatch = ''
+              # Prevent foojay from trying to download OpenJDK:
+              substituteInPlace settings.gradle \
+                --replace-fail 'id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0"' ""
+
+              substituteInPlace build.gradle \
+                --replace-fail 'vendor = JvmVendorSpec.AMAZON' ""
+            '';
 
             installPhase = ''
               runHook preInstall
@@ -83,6 +88,8 @@
         )
         {
           gradle = pkgs.gradle_9;
+          jdk = pkgs.jdk25;
+          jre = pkgs.jre25_minimal;
         };
 
     checks.nextflow-language-server = self.packages.${system}.nextflow-language-server;
